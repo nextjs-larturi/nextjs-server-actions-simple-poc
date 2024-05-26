@@ -1,9 +1,22 @@
-import { createProduct } from '@/actions/products-actions'
+'use client'
 
-export default function HomePage() {
+import { createProduct } from '@/actions/products-actions'
+import { useRef } from 'react'
+import { toast } from 'sonner'
+
+export default function ClientPage() {
+  const formRef = useRef<HTMLFormElement>(null)
   return (
     <div className='flex justify-center items-center h-screen min-w-[400px]'>
-      <form className='min-w-[400px]' action={createProduct}>
+      <form
+        ref={formRef}
+        className='min-w-[400px]'
+        action={async (formData) => {
+          const product = await createProduct(formData)
+          toast.success(`Product created: ${product?.name} $${product?.price}`)
+          formRef.current?.reset()
+        }}
+      >
         <input
           type='text'
           placeholder='Name'
