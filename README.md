@@ -1,6 +1,6 @@
 # Simple Next.js Server Actions Form
 
-## Simple Server Actions Form with client-side toast and server-side process data
+Simple Server Actions Form with client-side toast and server-side process data
 
 ## Getting Started
 
